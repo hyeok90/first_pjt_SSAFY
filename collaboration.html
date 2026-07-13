@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>임베디드 엔지니어 유진혁 | 협업 방식</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Maru Buri & Pretendard Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Maru+Buri:wght@300;400;600;700;800&family=Pretendard:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cozy: '#F9F8F6',
+            clay: '#E5E2DC',
+            moss: '#3E5643',
+            terracotta: '#D27D60',
+            darkmoss: '#2D3F31',
+            textdark: '#2E2D2B',
+          },
+          fontFamily: {
+            buri: ['"Maru Buri"', 'serif'],
+            pretendard: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F9F8F6;
+      color: #2E2D2B;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .warm-glow {
+      box-shadow: 0 10px 30px -10px rgba(62, 86, 67, 0.15);
+    }
+    .clay-border {
+      border-color: #E5E2DC;
+    }
+    .nav-link.active {
+      color: #3E5643;
+      font-weight: 700;
+      border-bottom: 2px solid #3E5643;
+    }
+  </style>
+</head>
+<body class="font-pretendard leading-relaxed antialiased">
+
+  <!-- Header Navigation -->
+  <header class="fixed top-0 left-0 w-full bg-cozy/80 backdrop-blur-md z-50 border-b border-clay/40 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="font-buri font-bold text-moss text-lg tracking-wide hover:opacity-80 transition-opacity">
+        Jinhyeok Yu.dev
+      </a>
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-textdark/80">
+        <a href="index.html" class="nav-link hover:text-moss transition-colors">홈</a>
+        <a href="about.html" class="nav-link hover:text-moss transition-colors">소개 & 프로젝트</a>
+        <a href="collaboration.html" class="nav-link active hover:text-moss transition-colors">협업 방식</a>
+      </nav>
+      <div>
+        <a href="#contact" class="px-4 py-2 text-xs font-semibold text-cozy bg-moss rounded-full hover:bg-terracotta transition-all duration-300 tracking-wider">
+          COFFEE CHAT
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Soft Skills Section -->
+  <section id="softskills" class="py-24 bg-clay/30 mt-16">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">SOFT SKILLS & ATTITUDE</span>
+        <h2 class="font-buri text-3xl text-moss font-bold mt-2">안정적인 협업을 만드는 약속과 데이터</h2>
+        <p class="text-sm text-textdark/70 mt-3 font-light">
+          열정적인 감성에 더해진 차가운 통계적 스케줄 관리로 완벽한 완결성을 보장합니다.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-stretch">
+        <div class="bg-cozy p-8 rounded-3xl border border-clay/80 warm-glow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-terracotta/10 rounded-full flex items-center justify-center text-terracotta">
+              <i data-lucide="calendar"></i>
+            </div>
+            <h3 class="font-buri text-2xl text-moss font-bold">"스케줄을 정량 데이터화하여 불안함을 지우다"</h3>
+            <p class="text-sm text-textdark/80 font-light leading-relaxed">
+              프로젝트 일정은 주관적 판단에 의지하지 않습니다. 각 과업을 세부 마일스톤과 '정량적인 공수 수치'로 구조화하여 팀원들에게 투명하게 공유합니다. 이로써 병목 현상을 예측하고 조기에 협력 대안을 강구합니다.
+            </p>
+          </div>
+          <div class="mt-8 border-t border-clay/60 pt-4 flex items-center gap-4">
+            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">정량화 관리</span>
+            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">병목 최소화</span>
+          </div>
+        </div>
+
+        <div class="bg-cozy p-8 rounded-3xl border border-clay/80 warm-glow flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-moss/10 rounded-full flex items-center justify-center text-moss">
+              <i data-lucide="binary"></i>
+            </div>
+            <h3 class="font-buri text-2xl text-moss font-bold">"동료와 성장하기 위한 AI 논문 역공학 분석 스터디"</h3>
+            <p class="text-sm text-textdark/80 font-light leading-relaxed">
+              단순 복사 붙여넣기를 넘어, 동료 개발자들과 함께 AI 모델 논문의 내부 연산 단계를 한 줄씩 파헤치는 분해 회의를 정기적으로 개설합니다. 함께 구조를 이해하고 고도화하며 집단 성장의 기쁨을 공유합니다.
+            </p>
+          </div>
+          <div class="mt-8 border-t border-clay/60 pt-4 flex items-center gap-4">
+            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">논문 분석</span>
+            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">집단 지성</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Coffee Chat Section -->
+  <section id="contact" class="py-24 bg-moss text-cozy relative overflow-hidden">
+    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-terracotta/20 filter blur-2xl opacity-60"></div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+      <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">LET'S CONNECT</span>
+      <h2 class="font-buri text-3xl md:text-4xl text-cozy font-bold mt-3 mb-6">
+        기술의 깊이와 소통의 따스함에 매료되었다면,<br class="hidden sm:inline"> 유진혁과 커피챗 한 잔 어떠세요?
+      </h2>
+      <p class="text-sm md:text-base text-cozy/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+        SSAFY 동료분들, 임베디드 장치에 인공지능 영혼을 불어넣어 멋진 서비스를 준비 중인 스타트업 및 연구원 여러분과의 대화를 언제나 기쁜 마음으로 기다리고 있습니다.
+      </p>
+
+      <div class="bg-darkmoss/50 border border-cozy/10 rounded-3xl p-6 md:p-8 max-w-lg mx-auto text-left shadow-2xl">
+        <h4 class="font-semibold text-sm text-terracotta mb-4 flex items-center gap-2">
+          <i data-lucide="coffee" class="w-4 h-4"></i>
+          유진혁의 커피챗 정량적 시간 매니저
+        </h4>
+        <div class="space-y-4 text-xs">
+          <div>
+            <label class="block text-cozy/70 mb-2 font-medium">1. 소통 희망 카테고리</label>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectTopic(this, '임베디드')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">임베디드 제어</button>
+              <button onclick="selectTopic(this, 'AI')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">AI 데이터 파이프라인</button>
+              <button onclick="selectTopic(this, '네트워킹')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">SSAFY 교류 / 친목</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-cozy/70 mb-2 font-medium">2. 희망 주 시간대</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="selectTime(this, '평일 저녁')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center">평일 퇴근/세션 직후 (18시 이후)</button>
+              <button onclick="selectTime(this, '주말 전체')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center">주말 낮/저녁 (상시)</button>
+            </div>
+          </div>
+          <div>
+            <label class="block text-cozy/70 mb-1.5 font-medium">3. 가벼운 한 마디 남기기</label>
+            <input type="text" id="chat-msg" placeholder="예: Isaac Sim 관련해서 꿀팁 여쭙고 싶어요!" class="w-full bg-moss/60 border border-cozy/20 focus:border-terracotta focus:outline-none p-2.5 rounded-lg text-cozy text-xs">
+          </div>
+          <button onclick="sendMockCoffeeChat()" class="w-full py-3 bg-terracotta hover:bg-terracotta/90 text-cozy font-bold rounded-lg text-xs tracking-wider transition-all shadow-md flex items-center justify-center gap-2 mt-2">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            커피챗 노크하기 (이메일 템플릿 복사)
+          </button>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-8 mt-12 text-sm text-cozy/70 font-light">
+        <a href="mailto:yujinhyeok01@naver.com" class="hover:text-terracotta transition-colors flex items-center gap-1.5">
+          <i data-lucide="mail" class="w-4 h-4"></i>
+          yujinhyeok01@naver.com
+        </a>
+        <a href="https://github.com/hyeok90" target="_blank" class="hover:text-terracotta transition-colors flex items-center gap-1.5">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          github.com/hyeok90
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Notification -->
+  <div id="modal-toast" class="fixed bottom-6 right-6 z-50 bg-cozy border border-clay text-textdark p-4 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+    <div class="w-8 h-8 rounded-full bg-moss/10 flex items-center justify-center text-moss">
+      <i data-lucide="check" class="w-5 h-5"></i>
+    </div>
+    <div>
+      <h5 class="text-xs font-bold text-moss">시스템 통보</h5>
+      <p id="modal-toast-msg" class="text-[11px] text-textdark/70"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-clay/40 py-12 text-center text-xs text-textdark/50 font-light border-t border-clay/80">
+    <div class="max-w-6xl mx-auto px-6 space-y-4">
+      <div class="font-buri font-bold text-moss text-base tracking-widest">유진혁 PORTFOLIO</div>
+      <p class="max-w-md mx-auto">
+        기계의 뼈대에 AI를 이식하는 감성 공학자. 본 포트폴리오는 어떠한 컴파일 프레임워크 없이 순수한 온기가 깃든 바닐라 아키텍처로 짜였습니다.
+      </p>
+      <p>© 2026 Yu Jin Hyeok. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let selectedTopic = '임베디드';
+    let selectedTime = '평일 저녁';
+
+    function selectTopic(btn, topic) {
+      document.querySelectorAll('.topic-btn').forEach(b => {
+        b.classList.remove('bg-terracotta', 'border-terracotta');
+        b.classList.add('bg-moss/60', 'border-cozy/20');
+      });
+      btn.classList.remove('bg-moss/60', 'border-cozy/20');
+      btn.classList.add('bg-terracotta', 'border-terracotta');
+      selectedTopic = topic;
+    }
+
+    function selectTime(btn, time) {
+      document.querySelectorAll('.time-btn').forEach(b => {
+        b.classList.remove('bg-terracotta', 'border-terracotta');
+        b.classList.add('bg-moss/60', 'border-cozy/20');
+      });
+      btn.classList.remove('bg-moss/60', 'border-cozy/20');
+      btn.classList.add('bg-terracotta', 'border-terracotta');
+      selectedTime = time;
+    }
+
+    function sendMockCoffeeChat() {
+      const extraMsg = document.getElementById('chat-msg').value || '기획서를 기반으로 한 따뜻한 소통 희망합니다.';
+      const emailTemplate = `안녕하세요, 진혁님! 포트폴리오를 읽고 커피챗 제안드립니다.\n\n`
+        + `[관심 분야]: ${selectedTopic}\n`
+        + `[선호 시간대]: ${selectedTime}\n`
+        + `[한 마디]: ${extraMsg}\n\n`
+        + `편하신 시간 조율하여 회신 부탁드립니다. 감사합니다!`;
+      const el = document.createElement('textarea');
+      el.value = emailTemplate;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showToast("이메일 제안서가 클립보드에 복사되었습니다! 편하게 발송하세요.");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('modal-toast');
+      const msgEl = document.getElementById('modal-toast-msg');
+      msgEl.innerText = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
