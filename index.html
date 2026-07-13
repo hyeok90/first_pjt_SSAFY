@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>임베디드 엔지니어 유진혁 | Home</title>
+  <title>임베디드 엔지니어 유진혁 | Portfolio</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -30,88 +30,388 @@
           fontFamily: {
             buri: ['"Maru Buri"', 'serif'],
             pretendard: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-          },
-          boxShadow: {
-            'warm': '0 10px 30px -10px rgba(62, 86, 67, 0.15)',
           }
         }
       }
     }
   </script>
-</head>
-<body class="bg-cozy text-textdark font-pretendard leading-relaxed antialiased">
 
-  <!-- Header Navigation -->
-  <header class="fixed top-0 left-0 w-full bg-cozy/80 backdrop-blur-md z-50 border-b border-clay/40 transition-all duration-300">
+  <style>
+    body {
+      background-color: #F9F8F6;
+      color: #2E2D2B;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .warm-glow {
+      box-shadow: 0 12px 35px -10px rgba(62, 86, 67, 0.08);
+    }
+    
+    .hover-glow:hover {
+      box-shadow: 0 20px 40px -15px rgba(210, 125, 96, 0.15);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F9F8F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E5E2DC;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3E5643;
+    }
+  </style>
+</head>
+<body class="font-pretendard leading-relaxed antialiased">
+
+  <!-- 1. 공통 상단 네비게이션 바 컴포넌트 -->
+  <header id="global-header" class="fixed top-0 left-0 w-full bg-cozy/80 backdrop-blur-md z-50 border-b border-clay/0 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="font-buri font-bold text-moss text-lg tracking-wide hover:opacity-80 transition-opacity">
+      
+      <!-- 로고 영역 -->
+      <a href="index.html" class="font-buri font-bold text-moss text-lg tracking-wide hover:opacity-85 transition-opacity flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-terracotta"></span>
         Jinhyeok Yu.dev
       </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-textdark/80">
-        <a href="index.html" class="text-moss font-bold border-b-2 border-moss hover:text-moss transition-colors">홈</a>
-        <a href="about.html" class="hover:text-moss transition-colors">소개 & 프로젝트</a>
-        <a href="collaboration.html" class="hover:text-moss transition-colors">협업 방식</a>
+
+      <!-- 데스크톱 메뉴 링크 (홈 활성화) -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="index.html" class="text-moss font-semibold transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-moss after:transition-all after:duration-300">홈</a>
+        <a href="about.html" class="text-textdark/80 hover:text-moss transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-moss hover:after:w-full after:transition-all after:duration-300">소개</a>
+        <a href="collaboration.html" class="text-textdark/80 hover:text-moss transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-moss hover:after:w-full after:transition-all after:duration-300">협업 방식</a>
       </nav>
-      <div>
-        <a href="collaboration.html#contact" class="px-4 py-2 text-xs font-semibold text-cozy bg-moss rounded-full hover:bg-terracotta transition-all duration-300 tracking-wider">
+
+      <!-- 우측 상단 유틸리티 (커피챗 버튼 & 모바일 토글) -->
+      <div class="flex items-center gap-4">
+        <a href="collaboration.html#contact-form" class="hidden sm:inline-block px-5 py-2 text-xs font-semibold text-cozy bg-moss rounded-full hover:bg-terracotta transition-all duration-300 tracking-wider">
+          COFFEE CHAT
+        </a>
+        
+        <!-- 모바일 토글 버튼 -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-textdark/80 hover:text-moss focus:outline-none" aria-label="메뉴 열기">
+          <i id="menu-icon" data-lucide="menu" class="w-6 h-6 transition-transform duration-300"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobile-drawer" class="md:hidden max-h-0 overflow-hidden bg-cozy border-t border-clay/30 transition-all duration-300 ease-in-out">
+      <div class="px-6 py-4 space-y-4 text-sm font-medium text-textdark/80 flex flex-col">
+        <a href="index.html" class="py-2 border-b border-clay/20 text-moss font-semibold hover:text-moss transition-colors">홈</a>
+        <a href="about.html" class="py-2 border-b border-clay/20 hover:text-moss transition-colors">소개</a>
+        <a href="collaboration.html" class="py-2 border-b border-clay/20 hover:text-moss transition-colors">협업 방식</a>
+        <a href="collaboration.html#contact-form" class="py-3 mt-2 text-center text-xs font-semibold text-cozy bg-moss rounded-xl hover:bg-terracotta transition-all duration-300">
           COFFEE CHAT
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen pt-24 flex flex-col justify-center relative overflow-hidden px-6">
-    <div class="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-clay/30 filter blur-3xl opacity-70 -z-10"></div>
-    <div class="absolute bottom-10 right-0 w-80 h-80 rounded-full bg-terracotta/5 filter blur-3xl opacity-80 -z-10"></div>
-    
-    <div class="max-w-4xl mx-auto text-center py-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-clay/50 text-moss text-xs font-semibold mb-6 tracking-wide">
-        <span class="w-1.5 h-1.5 rounded-full bg-terracotta animate-pulse"></span>
-        EMBEDDED & AI CONVERGENCE ENGINEER
-      </div>
+  <!-- Hero Area -->
+  <main class="min-h-screen pt-16">
+    <section class="min-h-[85vh] flex flex-col justify-center relative overflow-hidden px-6">
+      <div class="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-clay/30 filter blur-3xl opacity-70 -z-10"></div>
+      <div class="absolute bottom-10 right-0 w-80 h-80 rounded-full bg-terracotta/5 filter blur-3xl opacity-80 -z-10"></div>
       
-      <h1 class="font-buri text-2xl sm:text-2.5xl md:text-3xl lg:text-[2.4rem] leading-tight text-textdark font-semibold tracking-tight mb-8 max-w-2.5xl mx-auto whitespace-nowrap">
-        "기계공학의 <span class="text-moss border-b-2 border-moss/20 pb-1">뼈대</span>에 AI의 <span class="text-terracotta border-b-2 border-terracotta/20 pb-1">신경망</span>을 더하다"
-      </h1>
-      
-      <p class="text-base md:text-lg text-textdark/70 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-        움직이는 하드웨어의 감각을 이해하고, 지능화된 소프트웨어의 파이프라인을 설계합니다.<br class="hidden sm:inline"> 
-        스쳐가는 기계적 한계를 코드와 알고리즘으로 메우는 융합형 엔지니어, <strong>유진혁</strong>입니다.
-      </p>
+      <div class="max-w-4xl mx-auto text-center py-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-clay/50 text-moss text-xs font-semibold mb-6 tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-terracotta animate-pulse"></span>
+          EMBEDDED & AI CONVERGENCE ENGINEER
+        </div>
+        
+        <h1 class="font-buri text-3xl md:text-5xl lg:text-[3.25rem] leading-tight md:leading-snug lg:leading-tight text-textdark font-semibold tracking-tight mb-8">
+          "기계공학의 <span class="text-moss border-b-2 border-moss/20 pb-1">뼈대</span>에<br class="md:hidden"> AI의 <span class="text-terracotta border-b-2 border-terracotta/20 pb-1">신경망</span>을 더하다"
+        </h1>
+        
+        <p class="text-base md:text-lg text-textdark/70 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          움직이는 하드웨어의 미세한 떨림과 물리 법칙을 온전히 감지하고, 지능화된 AI 모델과 통신 제어 파이프라인으로 메커니즘의 한계를 극복합니다.<br class="hidden sm:inline"> 
+          실력 위에 인간미 있는 소통을 가미하는 융합형 엔지니어, <strong>유진혁</strong>입니다.
+        </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="about.html" class="w-full sm:w-auto px-8 py-4 bg-moss hover:bg-darkmoss text-cozy font-medium rounded-lg transition-all shadow-md flex items-center justify-center gap-2">
-          나의 피벗 스토리 보기
-          <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
-        </a>
-        <a href="collaboration.html#contact" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-clay hover:bg-clay/30 text-textdark/80 font-medium rounded-lg transition-all flex items-center justify-center gap-2">
-          연락하기
-        </a>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="about.html" class="w-full sm:w-auto px-8 py-4 bg-moss hover:bg-darkmoss text-cozy font-medium rounded-lg transition-all shadow-md flex items-center justify-center gap-2">
+            소개 & 기술 레이어 탐색
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="collaboration.html" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-clay hover:bg-clay/30 text-textdark/80 font-medium rounded-lg transition-all flex items-center justify-center gap-2">
+            협업 방식 & 커피챗
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-xs text-moss/50">
-      <span>천천히 아래로 내려 읽어보세요</span>
-      <div class="w-5 h-8 border-2 border-moss/30 rounded-full flex justify-center p-1">
-        <div class="w-1 h-2 bg-moss/60 rounded-full animate-bounce"></div>
+    <!-- Strengths Quick Summary -->
+    <section class="py-20 bg-clay/20 border-t border-b border-clay/40">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">CORE EXPERIENCE</span>
+          <h2 class="font-buri text-3xl text-moss font-bold mt-2">유진혁만이 가진 4가지 기술적 정수</h2>
+          <p class="text-xs md:text-sm text-textdark/60 mt-2 font-light">
+            단순히 코드를 나열하기보다, 하드웨어에서 소프트웨어까지 관통하는 유기적인 솔루션을 만듭니다.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Strength Card 1 -->
+          <div class="bg-cozy p-6 rounded-2xl border border-clay/60 hover-glow hover:-translate-y-1 transition-all duration-300 warm-glow flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-moss/10 rounded-lg flex items-center justify-center text-moss mb-4">
+                <i data-lucide="wrench" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg text-textdark mb-2">H/W-S/W 융합 메커니즘</h3>
+              <p class="text-xs text-textdark/70 font-light leading-relaxed">
+                기계공학 학사 배경을 토대로 모터 동역학, 기하학적 관절 제어, 임피던스 피드백 구조를 정밀하게 이해하고 설계합니다.
+              </p>
+            </div>
+            <span class="text-[10px] text-moss font-bold tracking-widest mt-6 uppercase">Kinematics Node</span>
+          </div>
+
+          <!-- Strength Card 2 -->
+          <div class="bg-cozy p-6 rounded-2xl border border-clay/60 hover-glow hover:-translate-y-1 transition-all duration-300 warm-glow flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-moss/10 rounded-lg flex items-center justify-center text-moss mb-4">
+                <i data-lucide="git-branch" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg text-textdark mb-2">스마트 AI 데이터 설계</h3>
+              <p class="text-xs text-textdark/70 font-light leading-relaxed">
+                SAM, Active Learning, NVIDIA Isaac Sim을 결합해 물리 간극을 허물고 학습용 합성 이미지 생성 공수를 혁명적으로 낮춥니다.
+              </p>
+            </div>
+            <span class="text-[10px] text-moss font-bold tracking-widest mt-6 uppercase">Isaac Sim & SAM</span>
+          </div>
+
+          <!-- Strength Card 3 -->
+          <div class="bg-cozy p-6 rounded-2xl border border-clay/60 hover-glow hover:-translate-y-1 transition-all duration-300 warm-glow flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-moss/10 rounded-lg flex items-center justify-center text-moss mb-4">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg text-textdark mb-2">지연 시간 10ms 이하 보장</h3>
+              <p class="text-xs text-textdark/70 font-light leading-relaxed">
+                경량 고정 바이트 시리얼 스트림과 비동기 버퍼 구조를 갖춘 독자적 저지연 프로토콜을 통하여, 극단적 반응 속도를 완성했습니다.
+              </p>
+            </div>
+            <span class="text-[10px] text-moss font-bold tracking-widest mt-6 uppercase">Custom Protocol</span>
+          </div>
+
+          <!-- Strength Card 4 -->
+          <div class="bg-cozy p-6 rounded-2xl border border-clay/60 hover-glow hover:-translate-y-1 transition-all duration-300 warm-glow flex flex-col justify-between">
+            <div>
+              <div class="w-10 h-10 bg-moss/10 rounded-lg flex items-center justify-center text-moss mb-4">
+                <i data-lucide="book-open" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-semibold text-lg text-textdark mb-2">AI 논문 역공학 분석</h3>
+              <p class="text-xs text-textdark/70 font-light leading-relaxed">
+                기존 오픈소스의 단순 활용에 머물지 않고 논문의 네트워크 원리들을 역공학하여 로컬 하드웨어 한계치에 맞춤 가속합니다.
+              </p>
+            </div>
+            <span class="text-[10px] text-moss font-bold tracking-widest mt-6 uppercase">Paper Analysis</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+    <!-- Latency Simulator (Highlight Widget) -->
+    <section class="py-24 bg-cozy">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="bg-clay/30 rounded-3xl p-6 md:p-10 border border-clay/80 max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-12 gap-8 items-center">
+            
+            <div class="md:col-span-5 space-y-4">
+              <span class="text-xs text-terracotta font-semibold uppercase tracking-wider">Interactive Simulation</span>
+              <h3 class="font-buri text-2xl text-moss font-bold leading-tight">지연 시간 10ms 미만 극복을<br>직접 모니터링 해보세요</h3>
+              <p class="text-xs text-textdark/70 leading-relaxed font-light">
+                기존 범용 통신 아키텍처는 고해상도 환경에서 종종 패킷 드롭 및 전송 오버헤드로 인해 제어 루프가 무너지기 쉽습니다. 고정 바이트 스트림과 다이렉트 인터럽트 핸들러를 융합하여 가뿐히 이 한계를 해결합니다.
+              </p>
+              <button id="btn-run-sim" class="px-5 py-3 bg-moss hover:bg-darkmoss text-cozy text-xs font-semibold rounded-lg shadow-sm transition-all flex items-center gap-2">
+                <i data-lucide="play" class="w-4 h-4"></i>
+                실시간 통신 지연 분석기 가동
+              </button>
+            </div>
+
+            <div class="md:col-span-7 bg-cozy border border-clay/60 rounded-2xl p-6 relative overflow-hidden">
+              <div class="flex items-center justify-between mb-4 border-b border-clay pb-2">
+                <span class="text-xs font-bold text-textdark/80">임베디드 시리얼 수집 모니터</span>
+                <span class="text-[10px] text-moss font-mono bg-moss/10 px-2 py-0.5 rounded">ONLINE</span>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between text-xs mb-1.5 font-medium">
+                    <span class="text-textdark/60">기성 범용 소켓 통신</span>
+                    <span id="std-latency" class="text-textdark font-mono">148.4 ms</span>
+                  </div>
+                  <div class="w-full bg-clay/40 h-2 rounded-full overflow-hidden">
+                    <div id="std-bar" class="bg-textdark/30 h-full w-[74%] transition-all duration-300"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs mb-1.5 font-semibold text-moss">
+                    <span class="flex items-center gap-1">
+                      <i data-lucide="zap" class="w-3 h-3 text-terracotta"></i> 
+                      유진혁 커스텀 시리얼 프로토콜
+                    </span>
+                    <span id="cust-latency" class="font-mono text-terracotta">8.4 ms</span>
+                  </div>
+                  <div class="w-full bg-clay/40 h-2 rounded-full overflow-hidden">
+                    <div id="cust-bar" class="bg-terracotta h-full w-[8%] transition-all duration-300"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 border-t border-clay/60 pt-4">
+                <div class="flex justify-between text-[10px] text-textdark/50 mb-1">
+                  <span>실시간 패킷 응답 추이</span>
+                  <span>(단위: ms, 1,000Hz 샘플링 기준)</span>
+                </div>
+                <div class="h-20 bg-clay/20 rounded-lg flex items-end justify-between p-2 gap-[2px]">
+                  <div id="dynamic-graph" class="w-full h-full flex items-end gap-[1.5px] font-mono text-[9px]"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 공통 알림 토스트 & 푸터 영역 -->
+  <div id="modal-toast" class="fixed bottom-6 right-6 z-50 bg-cozy border border-clay text-textdark p-4 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+    <div class="w-8 h-8 rounded-full bg-moss/10 flex items-center justify-center text-moss"><i data-lucide="check" class="w-5 h-5"></i></div>
+    <div>
+      <h5 class="text-xs font-bold text-moss">알림</h5>
+      <p id="modal-toast-msg" class="text-[11px] text-textdark/70"></p>
+    </div>
+  </div>
+
   <footer class="bg-clay/40 py-12 text-center text-xs text-textdark/50 font-light border-t border-clay/80">
     <div class="max-w-6xl mx-auto px-6 space-y-4">
       <div class="font-buri font-bold text-moss text-base tracking-widest">유진혁 PORTFOLIO</div>
-      <p class="max-w-md mx-auto">
-        기계의 뼈대에 AI를 이식하는 감성 공학자. 본 포트폴리오는 어떠한 컴파일 프레임워크 없이 순수한 온기가 깃든 바닐라 아키텍처로 짜였습니다.
-      </p>
-      <p>© 2026 Yu Jin Hyeok. All rights reserved.</p>
+      <p class="max-w-md mx-auto">기계의 뼈대에 AI를 이식하는 감성 공학자. 독립된 다중 웹 페이지 구조로 정교하게 작동합니다.</p>
+      <p>© 2026 Jinhyeok Yu. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // 헤더 스크롤 감지 배경 제어
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('global-header');
+      if (window.scrollY > 20) {
+        header.classList.remove('border-b-clay/0');
+        header.classList.add('border-b-clay/40', 'shadow-sm', 'bg-cozy/95');
+      } else {
+        header.classList.remove('border-b-clay/40', 'shadow-sm', 'bg-cozy/95');
+        header.classList.add('border-b-clay/0');
+      }
+    });
+
+    // 모바일 햄버거 토글러
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isClosed = mobileDrawer.style.maxHeight === '0px' || !mobileDrawer.style.maxHeight;
+        if (isClosed) {
+          mobileDrawer.style.maxHeight = mobileDrawer.scrollHeight + 'px';
+          menuIcon.setAttribute('data-lucide', 'x');
+        } else {
+          mobileDrawer.style.maxHeight = '0px';
+          menuIcon.setAttribute('data-lucide', 'menu');
+        }
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      });
+    }
+
+    // 저지연 모니터링 시뮬레이션 데이터 관리
+    let simInterval = null;
+    let simData = Array.from({length: 25}, () => Math.floor(Math.random() * 20) + 140);
+    let customSimData = Array.from({length: 25}, () => Math.floor(Math.random() * 3) + 7);
+
+    function renderSimulatorGraph() {
+      const graphContainer = document.getElementById('dynamic-graph');
+      if (!graphContainer) return;
+      graphContainer.innerHTML = '';
+      
+      for (let i = 0; i < 25; i++) {
+        const stdHeight = Math.min((simData[i] / 200) * 100, 100);
+        const custHeight = Math.min((customSimData[i] / 200) * 100, 100);
+        
+        const barGroup = document.createElement('div');
+        barGroup.className = "flex-1 h-full flex items-end gap-[1.5px] opacity-80";
+        barGroup.innerHTML = `
+          <div class="w-[4px] bg-textdark/20 rounded-t" style="height: ${stdHeight}%"></div>
+          <div class="w-[4px] bg-terracotta rounded-t" style="height: ${custHeight}%"></div>
+        `;
+        graphContainer.appendChild(barGroup);
+      }
+    }
+    renderSimulatorGraph();
+
+    const runSimBtn = document.getElementById('btn-run-sim');
+    let isSimRunning = false;
+
+    if (runSimBtn) {
+      runSimBtn.addEventListener('click', () => {
+        if (isSimRunning) {
+          clearInterval(simInterval);
+          runSimBtn.innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i> 실시간 통신 지연 분석기 가동`;
+          isSimRunning = false;
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          showToast("지연 통계 갱신이 대기 상태로 변경되었습니다.");
+        } else {
+          runSimBtn.innerHTML = `<i data-lucide="square" class="w-3.5 h-3.5"></i> 측정 모니터링 종료`;
+          isSimRunning = true;
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+          showToast("임베디드 시리얼 데이터를 1,000Hz 속도로 수집합니다.");
+          
+          simInterval = setInterval(() => {
+            const nextStd = (Math.random() * 35 + 125).toFixed(1);
+            const nextCust = (Math.random() * 2.8 + 6.9).toFixed(1);
+
+            document.getElementById('std-latency').innerText = `${nextStd} ms`;
+            document.getElementById('cust-latency').innerText = `${nextCust} ms`;
+
+            document.getElementById('std-bar').style.width = `${Math.min((parseFloat(nextStd)/200)*100, 100)}%`;
+            document.getElementById('cust-bar').style.width = `${Math.min((parseFloat(nextCust)/200)*100, 100)}%`;
+
+            simData.shift();
+            simData.push(parseFloat(nextStd));
+
+            customSimData.shift();
+            customSimData.push(parseFloat(nextCust));
+
+            renderSimulatorGraph();
+          }, 450);
+        }
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('modal-toast');
+      const msgEl = document.getElementById('modal-toast-msg');
+      msgEl.innerText = message;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
   </script>
 </body>
 </html>

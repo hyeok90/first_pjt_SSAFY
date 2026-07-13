@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>임베디드 엔지니어 유진혁 | 협업 방식</title>
+  <title>유진혁 협업 방식 | Portfolio</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -30,166 +30,231 @@
           fontFamily: {
             buri: ['"Maru Buri"', 'serif'],
             pretendard: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-          },
-          boxShadow: {
-            'warm': '0 10px 30px -10px rgba(62, 86, 67, 0.15)',
           }
         }
       }
     }
   </script>
-</head>
-<body class="bg-cozy text-textdark font-pretendard leading-relaxed antialiased">
 
-  <!-- Header Navigation -->
-  <header class="fixed top-0 left-0 w-full bg-cozy/80 backdrop-blur-md z-50 border-b border-clay/40 transition-all duration-300">
+  <style>
+    body {
+      background-color: #F9F8F6;
+      color: #2E2D2B;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    
+    .warm-glow {
+      box-shadow: 0 12px 35px -10px rgba(62, 86, 67, 0.08);
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F9F8F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E5E2DC;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3E5643;
+    }
+  </style>
+</head>
+<body class="font-pretendard leading-relaxed antialiased">
+
+  <!-- 1. 공통 상단 네비게이션 바 컴포넌트 -->
+  <header id="global-header" class="fixed top-0 left-0 w-full bg-cozy/80 backdrop-blur-md z-50 border-b border-clay/0 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="font-buri font-bold text-moss text-lg tracking-wide hover:opacity-80 transition-opacity">
+      
+      <!-- 로고 영역 -->
+      <a href="index.html" class="font-buri font-bold text-moss text-lg tracking-wide hover:opacity-85 transition-opacity flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-terracotta"></span>
         Jinhyeok Yu.dev
       </a>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-textdark/80">
-        <a href="index.html" class="hover:text-moss transition-colors">홈</a>
-        <a href="about.html" class="hover:text-moss transition-colors">소개 & 프로젝트</a>
-        <a href="collaboration.html" class="text-moss font-bold border-b-2 border-moss hover:text-moss transition-colors">협업 방식</a>
+
+      <!-- 데스크톱 메뉴 링크 (협업 방식 활성화) -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium">
+        <a href="index.html" class="text-textdark/80 hover:text-moss transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-moss hover:after:w-full after:transition-all after:duration-300">홈</a>
+        <a href="about.html" class="text-textdark/80 hover:text-moss transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-moss hover:after:w-full after:transition-all after:duration-300">소개</a>
+        <a href="collaboration.html" class="text-moss font-semibold transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-moss after:transition-all after:duration-300">협업 방식</a>
       </nav>
-      <div>
-        <a href="#contact" class="px-4 py-2 text-xs font-semibold text-cozy bg-moss rounded-full hover:bg-terracotta transition-all duration-300 tracking-wider">
+
+      <!-- 우측 상단 유틸리티 (커피챗 버튼 & 모바일 토글) -->
+      <div class="flex items-center gap-4">
+        <a href="collaboration.html#contact-form" class="hidden sm:inline-block px-5 py-2 text-xs font-semibold text-cozy bg-moss rounded-full hover:bg-terracotta transition-all duration-300 tracking-wider">
+          COFFEE CHAT
+        </a>
+        
+        <!-- 모바일 토글 버튼 -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-textdark/80 hover:text-moss focus:outline-none" aria-label="메뉴 열기">
+          <i id="menu-icon" data-lucide="menu" class="w-6 h-6 transition-transform duration-300"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobile-drawer" class="md:hidden max-h-0 overflow-hidden bg-cozy border-t border-clay/30 transition-all duration-300 ease-in-out">
+      <div class="px-6 py-4 space-y-4 text-sm font-medium text-textdark/80 flex flex-col">
+        <a href="index.html" class="py-2 border-b border-clay/20 hover:text-moss transition-colors">홈</a>
+        <a href="about.html" class="py-2 border-b border-clay/20 hover:text-moss transition-colors">소개</a>
+        <a href="collaboration.html" class="py-2 border-b border-clay/20 text-moss font-semibold hover:text-moss transition-colors">협업 방식</a>
+        <a href="collaboration.html#contact-form" class="py-3 mt-2 text-center text-xs font-semibold text-cozy bg-moss rounded-xl hover:bg-terracotta transition-all duration-300">
           COFFEE CHAT
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Soft Skills Section -->
-  <section id="softskills" class="py-24 bg-clay/30 mt-16">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">SOFT SKILLS & ATTITUDE</span>
-        <h2 class="font-buri text-3xl text-moss font-bold mt-2">안정적인 협업을 만드는 약속과 데이터</h2>
-        <p class="text-sm text-textdark/70 mt-3 font-light">
-          열정적인 감성에 더해진 차가운 통계적 스케줄 관리로 완벽한 완결성을 보장합니다.
+  <!-- 4. [collaboration.html] 협업 가치관 / 커피챗 문의 화면 -->
+  <main class="min-h-screen pt-16">
+    <section class="py-20 bg-clay/20 border-b border-clay/40">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">COLLABORATION & PHILOSOPHY</span>
+          <h2 class="font-buri text-3xl text-moss font-bold mt-2">동료들에게 든든한 등대가 되는 동료</h2>
+          <p class="text-sm text-textdark/70 mt-2 font-light">가슴에는 기술 구현에 대한 낭만을, 협업 과정은 빈틈없는 정량 데이터 설계를 기반으로 삼습니다.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+          
+          <!-- Philosophy Card 1 -->
+          <div class="bg-cozy p-8 rounded-3xl border border-clay/80 warm-glow flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-terracotta/10 rounded-full flex items-center justify-center text-terracotta">
+                <i data-lucide="calendar" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-buri text-xl text-moss font-bold">"스케줄을 데이터화하여 협업의 불안을 완화합니다"</h3>
+              <p class="text-xs md:text-sm text-textdark/80 font-light leading-relaxed">
+                모호하게 "열심히 만드는 중"이라고 답변하는 습관을 경계합니다. 각 스프린트 목표를 작은 마일스톤 단위로 분해하고, 공정 시간(Man-Month/Hours)을 정량 수치로 계획해 팀원들의 자원 배분 계획을 명쾌히 돕습니다.
+              </p>
+            </div>
+            <div class="mt-6 text-xs text-textdark/50 flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-terracotta"></i> <span>공수 산정 데이터 기반 예측</span>
+            </div>
+          </div>
+
+          <!-- Philosophy Card 2 -->
+          <div class="bg-cozy p-8 rounded-3xl border border-clay/80 warm-glow flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-moss/10 rounded-full flex items-center justify-center text-moss">
+                <i data-lucide="binary" class="w-6 h-6"></i>
+              </div>
+              <h3 class="font-buri text-xl text-moss font-bold">"집단 성장을 이끄는 AI 아키텍처 역공학 스터디"</h3>
+              <p class="text-xs md:text-sm text-textdark/80 font-light leading-relaxed">
+                인공지능 모델 원리와 제어 소스코드를 혼자만 분석하는 것에 가두지 않습니다. 주기적으로 딥러닝 백본 아키텍처나 모터 역학 논문 스터디 회의를 기획하여 분석 통찰을 주변 동료들에게 따뜻하게 전파합니다.
+              </p>
+            </div>
+            <div class="mt-6 text-xs text-textdark/50 flex items-center gap-1">
+              <i data-lucide="users" class="w-3.5 h-3.5 text-moss"></i> <span>원격 논문 분석 지식 전파 지향</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Coffee Chat Booker -->
+    <section id="contact-form" class="py-24 bg-moss text-cozy relative overflow-hidden">
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-terracotta/20 filter blur-2xl opacity-60"></div>
+      
+      <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <h2 class="font-buri text-3xl text-cozy font-bold mb-4">정량적 소통 시간 조율기</h2>
+        <p class="text-xs md:text-sm text-cozy/80 max-w-lg mx-auto mb-10 font-light leading-relaxed">
+          SSAFY 동료 교류, 임베디드 AI 융합 제안 등 어떠한 주제든 따뜻하게 환영합니다.
         </p>
-      </div>
 
-      <div class="grid md:grid-cols-2 gap-8 items-stretch">
-        <div class="bg-cozy p-8 rounded-3xl border border-clay/80 shadow-warm flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-12 h-12 bg-terracotta/10 rounded-full flex items-center justify-center text-terracotta">
-              <i data-lucide="calendar"></i>
+        <div class="bg-darkmoss/50 border border-cozy/10 rounded-3xl p-6 md:p-8 max-w-lg mx-auto text-left shadow-2xl">
+          <div class="space-y-4 text-xs">
+            
+            <div>
+              <label class="block text-cozy/70 mb-2 font-medium">1. 소통 관심 주제</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button onclick="selectTopic(this, '임베디드 제어')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center font-medium">임베디드 제어</button>
+                <button onclick="selectTopic(this, 'AI 파이프라인')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center font-medium">AI 파이프라인</button>
+                <button onclick="selectTopic(this, 'SSAFY 교류')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center font-medium">SSAFY 교류</button>
+              </div>
             </div>
-            <h3 class="font-buri text-2xl text-moss font-bold">"스케줄을 정량 데이터화하여 불안함을 지우다"</h3>
-            <p class="text-sm text-textdark/80 font-light leading-relaxed">
-              프로젝트 일정은 주관적 판단에 의지하지 않습니다. 각 과업을 세부 마일스톤과 '정량적인 공수 수치'로 구조화하여 팀원들에게 투명하게 공유합니다. 이로써 병목 현상을 예측하고 조기에 협력 대안을 강구합니다.
-            </p>
-          </div>
-          <div class="mt-8 border-t border-clay/60 pt-4 flex items-center gap-4">
-            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">정량화 관리</span>
-            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">병목 최소화</span>
-          </div>
-        </div>
 
-        <div class="bg-cozy p-8 rounded-3xl border border-clay/80 shadow-warm flex flex-col justify-between">
-          <div class="space-y-4">
-            <div class="w-12 h-12 bg-moss/10 rounded-full flex items-center justify-center text-moss">
-              <i data-lucide="binary"></i>
+            <div>
+              <label class="block text-cozy/70 mb-2 font-medium">2. 주 활동 시간대</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="selectTime(this, '평일 저녁')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center font-medium">평일 저녁 (18시 이후)</button>
+                <button onclick="selectTime(this, '주말 전체')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center font-medium font-medium">주말 낮/저녁</button>
+              </div>
             </div>
-            <h3 class="font-buri text-2xl text-moss font-bold">"동료와 성장하기 위한 AI 논문 역공학 분석 스터디"</h3>
-            <p class="text-sm text-textdark/80 font-light leading-relaxed">
-              단순 복사 붙여넣기를 넘어, 동료 개발자들과 함께 AI 모델 논문의 내부 연산 단계를 한 줄씩 파헤치는 분해 회의를 정기적으로 개설합니다. 함께 구조를 이해하고 고도화하며 집단 성장의 기쁨을 공유합니다.
-            </p>
-          </div>
-          <div class="mt-8 border-t border-clay/60 pt-4 flex items-center gap-4">
-            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">논문 분석</span>
-            <span class="text-xs bg-clay text-textdark/80 px-2.5 py-1 rounded">집단 지성</span>
+
+            <div>
+              <label class="block text-cozy/70 mb-1.5 font-medium">3. 메시지 남기기</label>
+              <input type="text" id="chat-msg" placeholder="여쭈어 보고 싶으신 내용을 편하게 적어주세요!" class="w-full bg-moss/60 border border-cozy/20 focus:border-terracotta focus:outline-none p-2.5 rounded-lg text-cozy">
+            </div>
+
+            <button onclick="sendMockCoffeeChat()" class="w-full py-3 bg-terracotta hover:bg-terracotta/90 text-cozy font-bold rounded-lg text-xs tracking-wider transition-all shadow-md flex items-center justify-center gap-2 mt-2">
+              <i data-lucide="mail" class="w-4 h-4"></i> 커피챗 템플릿 복사하기
+            </button>
+            
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- CTA / Coffee Chat Section -->
-  <section id="contact" class="py-24 bg-moss text-cozy relative overflow-hidden">
-    <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-terracotta/20 filter blur-2xl opacity-60"></div>
-    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
-      <span class="text-xs uppercase tracking-widest text-terracotta font-semibold">LET'S CONNECT</span>
-      <h2 class="font-buri text-3xl md:text-4xl text-cozy font-bold mt-3 mb-6">
-        기술의 깊이와 소통의 따스함에 매료되었다면,<br class="hidden sm:inline"> 유진혁과 커피챗 한 잔 어떠세요?
-      </h2>
-      <p class="text-sm md:text-base text-cozy/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-        SSAFY 동료분들, 임베디드 장치에 인공지능 영혼을 불어넣어 멋진 서비스를 준비 중인 스타트업 및 연구원 여러분과의 대화를 언제나 기쁜 마음으로 기다리고 있습니다.
-      </p>
-
-      <div class="bg-darkmoss/50 border border-cozy/10 rounded-3xl p-6 md:p-8 max-w-lg mx-auto text-left shadow-2xl">
-        <h4 class="font-semibold text-sm text-terracotta mb-4 flex items-center gap-2">
-          <i data-lucide="coffee" class="w-4 h-4"></i>
-          유진혁의 커피챗 정량적 시간 매니저
-        </h4>
-        <div class="space-y-4 text-xs">
-          <div>
-            <label class="block text-cozy/70 mb-2 font-medium">1. 소통 희망 카테고리</label>
-            <div class="grid grid-cols-3 gap-2">
-              <button onclick="selectTopic(this, '임베디드')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">임베디드 제어</button>
-              <button onclick="selectTopic(this, 'AI')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">AI 데이터 파이프라인</button>
-              <button onclick="selectTopic(this, '네트워킹')" class="topic-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2.5 rounded-lg transition-all text-center">SSAFY 교류 / 친목</button>
-            </div>
-          </div>
-          <div>
-            <label class="block text-cozy/70 mb-2 font-medium">2. 희망 주 시간대</label>
-            <div class="grid grid-cols-2 gap-2">
-              <button onclick="selectTime(this, '평일 저녁')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center">평일 퇴근/세션 직후 (18시 이후)</button>
-              <button onclick="selectTime(this, '주말 전체')" class="time-btn border border-cozy/20 bg-moss/60 hover:bg-terracotta text-cozy p-2 rounded-lg transition-all text-center">주말 낮/저녁 (상시)</button>
-            </div>
-          </div>
-          <div>
-            <label class="block text-cozy/70 mb-1.5 font-medium">3. 가벼운 한 마디 남기기</label>
-            <input type="text" id="chat-msg" placeholder="예: Isaac Sim 관련해서 꿀팁 여쭙고 싶어요!" class="w-full bg-moss/60 border border-cozy/20 focus:border-terracotta focus:outline-none p-2.5 rounded-lg text-cozy text-xs">
-          </div>
-          <button onclick="sendMockCoffeeChat()" class="w-full py-3 bg-terracotta hover:bg-terracotta/90 text-cozy font-bold rounded-lg text-xs tracking-wider transition-all shadow-md flex items-center justify-center gap-2 mt-2">
-            <i data-lucide="mail" class="w-4 h-4"></i>
-            커피챗 노크하기 (이메일 템플릿 복사)
-          </button>
-        </div>
-      </div>
-
-      <div class="flex items-center justify-center gap-8 mt-12 text-sm text-cozy/70 font-light">
-        <a href="mailto:yujinhyeok01@naver.com" class="hover:text-terracotta transition-colors flex items-center gap-1.5">
-          <i data-lucide="mail" class="w-4 h-4"></i>
-          yujinhyeok01@naver.com
-        </a>
-        <a href="https://github.com/hyeok90" target="_blank" class="hover:text-terracotta transition-colors flex items-center gap-1.5">
-          <i data-lucide="github" class="w-4 h-4"></i>
-          github.com/hyeok90
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Modal Notification -->
+  <!-- 공통 알림 토스트 & 푸터 영역 -->
   <div id="modal-toast" class="fixed bottom-6 right-6 z-50 bg-cozy border border-clay text-textdark p-4 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
-    <div class="w-8 h-8 rounded-full bg-moss/10 flex items-center justify-center text-moss">
-      <i data-lucide="check" class="w-5 h-5"></i>
-    </div>
+    <div class="w-8 h-8 rounded-full bg-moss/10 flex items-center justify-center text-moss"><i data-lucide="check" class="w-5 h-5"></i></div>
     <div>
-      <h5 class="text-xs font-bold text-moss">시스템 통보</h5>
+      <h5 class="text-xs font-bold text-moss">알림</h5>
       <p id="modal-toast-msg" class="text-[11px] text-textdark/70"></p>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="bg-clay/40 py-12 text-center text-xs text-textdark/50 font-light border-t border-clay/80">
     <div class="max-w-6xl mx-auto px-6 space-y-4">
       <div class="font-buri font-bold text-moss text-base tracking-widest">유진혁 PORTFOLIO</div>
-      <p class="max-w-md mx-auto">
-        기계의 뼈대에 AI를 이식하는 감성 공학자. 본 포트폴리오는 어떠한 컴파일 프레임워크 없이 순수한 온기가 깃든 바닐라 아키텍처로 짜였습니다.
-      </p>
-      <p>© 2026 Yu Jin Hyeok. All rights reserved.</p>
+      <p class="max-w-md mx-auto">기계의 뼈대에 AI를 이식하는 감성 공학자. 독립된 다중 웹 페이지 구조로 정교하게 작동합니다.</p>
+      <p>© 2026 Jinhyeok Yu. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
 
-    let selectedTopic = '임베디드';
+    // 헤더 스크롤 감지 배경 제어
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('global-header');
+      if (window.scrollY > 20) {
+        header.classList.remove('border-b-clay/0');
+        header.classList.add('border-b-clay/40', 'shadow-sm', 'bg-cozy/95');
+      } else {
+        header.classList.remove('border-b-clay/40', 'shadow-sm', 'bg-cozy/95');
+        header.classList.add('border-b-clay/0');
+      }
+    });
+
+    // 모바일 햄버거 토글러
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isClosed = mobileDrawer.style.maxHeight === '0px' || !mobileDrawer.style.maxHeight;
+        if (isClosed) {
+          mobileDrawer.style.maxHeight = mobileDrawer.scrollHeight + 'px';
+          menuIcon.setAttribute('data-lucide', 'x');
+        } else {
+          mobileDrawer.style.maxHeight = '0px';
+          menuIcon.setAttribute('data-lucide', 'menu');
+        }
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      });
+    }
+
+    // 커피챗 자동 템플릿 복사 기능
+    let selectedTopic = '임베디드 제어';
     let selectedTime = '평일 저녁';
 
     function selectTopic(btn, topic) {
@@ -213,31 +278,31 @@
     }
 
     function sendMockCoffeeChat() {
-      const extraMsg = document.getElementById('chat-msg').value || '기획서를 기반으로 한 따뜻한 소통 희망합니다.';
-      const emailTemplate = `안녕하세요, 진혁님! 포트폴리오를 읽고 커피챗 제안드립니다.\n\n`
-        + `[관심 분야]: ${selectedTopic}\n`
-        + `[선호 시간대]: ${selectedTime}\n`
-        + `[한 마디]: ${extraMsg}\n\n`
-        + `편하신 시간 조율하여 회신 부탁드립니다. 감사합니다!`;
+      const extraMsg = document.getElementById('chat-msg').value || '기획서를 바탕으로 한 성실한 티타임을 희망합니다.';
+      const emailTemplate = `안녕하세요, 유진혁 엔지니어님!\n\n포트폴리오를 대단히 인상 깊게 읽고 가벼운 소통 일정을 요청하기 위해 이메일 메시지를 보냅니다.\n\n- 소통 제안 주제: ${selectedTopic}\n- 선호 회동 시간대: ${selectedTime}\n- 주요 사전 메시지: ${extraMsg}\n\n감사합니다!`;
+      
       const el = document.createElement('textarea');
       el.value = emailTemplate;
       document.body.appendChild(el);
       el.select();
       document.execCommand('copy');
       document.body.removeChild(el);
-      showToast("이메일 제안서가 클립보드에 복사되었습니다! 편하게 발송하세요.");
+
+      showToast("커피챗 이메일 템플릿이 클립보드에 무사히 복사되었습니다!");
     }
 
     function showToast(message) {
       const toast = document.getElementById('modal-toast');
       const msgEl = document.getElementById('modal-toast-msg');
       msgEl.innerText = message;
+      
       toast.classList.remove('translate-y-20', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
+
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3500);
+      }, 3000);
     }
   </script>
 </body>
